@@ -9,11 +9,6 @@ const Board = () => {
   const player2 = 10;
   let board = Array(9).fill(emptySpace);
 
-  const getTurn = () => turn;
-  const getPlayer1 = () => player1;
-  const getPlayer2 = () => player2;
-  const getBoard = () => board;
-
   const playerTurn = () => (turn % 2 === 1 ? 1 : 2);
 
   const isEmpty = () => {
@@ -38,7 +33,7 @@ const Board = () => {
   };
 
   const validPosition = (position) => {
-    if (position < 1 || position > 8) return false;
+    if (position < 0 || position > 8) return false;
     if (isFull()) return false;
     if (board[position] !== 0) return false;
 
@@ -46,15 +41,12 @@ const Board = () => {
   };
 
   const newMove = (position) => {
-    if (validPosition(position)) {
+    if (validPosition(position) === false) {
       console.log('ERROR: Invalid position');
-      return false;
+    } else {
+      board[position] = playerTurn === 1 ? player1 : player2;
+      turn += 1;
     }
-
-    board[position] = playerTurn === 1 ? player1 : player2;
-    turn += 1;
-
-    return true;
   };
 
   // [0] [1] [2]
@@ -87,14 +79,8 @@ const Board = () => {
 
   return {
     turn,
-    emptySpace,
-    player1,
-    player2,
     board,
-    getTurn,
-    getPlayer1,
-    getPlayer2,
-    getBoard,
+    playerTurn,
     isEmpty,
     isFull,
     resetBoard,
