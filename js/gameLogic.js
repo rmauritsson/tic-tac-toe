@@ -13,6 +13,17 @@ const Board = () => {
   let turn = 1;
   let board = Array(9).fill(emptySpace);
 
+  const getIndex = () => {
+    //console.log('Clicked');
+    const cells = Array.from(document.querySelector('.cell'));
+    // cells.forEach((cell) => {
+    // cell.innerText = 'X';
+    // });
+  };
+  const handleClick = () => {
+    document.querySelector('.cell').addEventListener('click', getIndex, { once: true });
+  };
+
   // Changes the name of the selected player from the default one
   const changeName = (name, number) => {
     if (number === 1) playerName.player1 = name;
@@ -114,6 +125,7 @@ const Board = () => {
     validPosition,
     newMove,
     checkStatus,
+    handleClick,
   };
 };
 

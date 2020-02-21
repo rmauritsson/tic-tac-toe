@@ -10,11 +10,13 @@ const hideForm = () => {
 };
 
 const game = Board();
-
+game.handleClick();
 game.newMove(0);
 game.newMove(1);
+
+
 
 document.getElementById('turn').innerHTML = `Check status: ${game.board}`;
 document.getElementById('player').innerHTML = `Player: ${game.playerTurn()}`;
 
-document.getElementById('startGameButton').addEventListener('click', action());
+//document.getElementById('startGameButton').addEventListener('click', action);
