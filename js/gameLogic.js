@@ -6,8 +6,18 @@ const Board = () => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
+  const playerName = {
+    player1: 'Player 1',
+    player2: 'Player 2',
+  };
   let turn = 1;
   let board = Array(9).fill(emptySpace);
+
+  // Changes the name of the selected player from the default one
+  const changeName = (name, number) => {
+    if (number === 1) playerName.player1 = name;
+    if (number === 2) playerName.player2 = name;
+  };
 
   // Returns the Player number from the actual turn
   const playerTurn = () => (turn % 2 === 1 ? 1 : 2);
@@ -95,7 +105,9 @@ const Board = () => {
   return {
     turn,
     board,
+    player: playerName,
     playerTurn,
+    changeName,
     isEmpty,
     isFull,
     resetBoard,
