@@ -84,6 +84,25 @@ const Board = () => {
 
     return isFull() ? 3 : 0;
   };
+
+  return {
+    turn,
+    emptySpace,
+    player1,
+    player2,
+    board,
+    getTurn,
+    getPlayer1,
+    getPlayer2,
+    getBoard,
+    isEmpty,
+    isFull,
+    resetBoard,
+    validPosition,
+    newMove,
+    checkWinner,
+    checkStatus,
+  };
 };
 
 export default Board;
