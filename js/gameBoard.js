@@ -1,6 +1,6 @@
 const gameBoard = (() => {
   const hide = () => {
-    document.querySelector('form').style.visibility = 'hidden'
+    document.querySelector('form').style.visibility = 'hidden';
   };
   return { hide };
 })();

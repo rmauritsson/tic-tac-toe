@@ -1,4 +1,4 @@
-import gameBoard from './gameBoard.js';
+import gameBoard from './gameBoard';
 
 const hideForm = () => {
   const action = () => {
