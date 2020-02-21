@@ -1,8 +1,10 @@
-import gameBoard from './gameBoard';
+import gameBoard from './gameBoard.js';
 
-function drawBoard() {
-  const board = document.getElementById('board');
-  gameBoard.draw(board);
-}
+const hideForm = () => {
+  const action = () => {
+    gameBoard.hide();
+  };
+  return { action };
+};
 
-drawBoard();
+document.getElementById('startGameButton').addEventListener('click', action());
