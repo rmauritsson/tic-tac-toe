@@ -7,7 +7,7 @@
 
 <center><h1>Microverse 602: Tic Tac Toe</h1></center>
 
-<center><h2><a href="https://rmauritsson.github.io/tic-tac-toe/">Try a live version of this project here!</a><h2></center>
+<center><h2><a href="https://vigorous-galileo-7e1c1f.netlify.com/">Try a live version of this project here!</a><h2></center>
 
 ## About The Project
 
