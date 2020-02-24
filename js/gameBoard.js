@@ -33,6 +33,7 @@ const Board = (game) => {
     for (let i = 0; i < game.board.length; i += 1) {
       const cell = row.insertCell();
       cell.id = `cell-${i}`;
+      cell.class = 'cellClass';
 
       switch (game.board[i]) {
         case 1:
