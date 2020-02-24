@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-/* eslint-disable import/extensions */
 const Board = (game) => {
   let status;
 
@@ -29,7 +27,6 @@ const Board = (game) => {
     board.innerHTML = '';
     showWinner();
 
-    // eslint-disable-next-line no-restricted-syntax
     for (let i = 0; i < game.board.length; i += 1) {
       const cell = row.insertCell();
       cell.id = `cell-${i}`;
@@ -46,14 +43,10 @@ const Board = (game) => {
           cell.innerHTML = '.';
       }
 
-      // cell.innerHTML = i;
-
-      cell.addEventListener('click', (e) => {
-        // eslint-disable-next-line no-alert
-        // alert(`Clicked! ${i}`);
+      // eslint-disable-next-line no-loop-func
+      cell.addEventListener('click', () => {
         status = game.newMove(i);
         drawBoard();
-        // console.log(e.target);
       });
 
       count += 1;

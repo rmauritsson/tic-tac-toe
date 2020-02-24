@@ -1,24 +1,11 @@
 /* eslint-disable max-len */
-// import Player from './player';
-/* eslint-disable no-console */
-/* eslint-disable no-unused-vars */
 
 const Game = () => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
-  const playerName = {
-    player1: 'Player 1',
-    player2: 'Player 2',
-  };
   let turn = 1;
   let board = Array(9).fill(emptySpace);
-
-  // Changes the name of the selected player from the default one
-  const changeName = (name, number) => {
-    if (number === 1) playerName.player1 = name;
-    if (number === 2) playerName.player2 = name;
-  };
 
   // Returns the Player number from the actual turn
   const playerTurn = () => (turn % 2 === 1 ? 1 : 2);
@@ -47,13 +34,7 @@ const Game = () => {
     turn = 1;
   };
 
-  // Returns true if the sum of the 3 variables on a row,         [0] [1] [2]
-  // column or diagonal are equal to 3 or -3.                     [3] [4] [5]
-  // It should only be used by checkStatus                        [6] [7] [8]
-  // returns 0 if there is no winner
-  // returns 1 if the winner is the player 1
-  // returns 2 if the winner is the player 2
-  // returns 3 if there is a draw
+  // Returns the number of the winner player, 3 if is a draw, 0 if there is no winner
   const checkStatus = () => {
     const checkWinner = (player, index) => {
       for (let i = 0; i < 3; i += 1) {
@@ -78,20 +59,20 @@ const Game = () => {
   // Returns true if the position is valid for a new turn
   const validPosition = (position) => {
     if (position < 0 || position > 8) {
-      console.log('ERROR: Position can only be between 0 and 8');
+      // console.log('ERROR: Position can only be between 0 and 8');
       return false;
     }
     if (isFull()) {
-      console.log('ERROR: The board is full, no more moves available');
+      // console.log('ERROR: The board is full, no more moves available');
       return false;
     }
     if (board[position] !== 0) {
-      console.log('ERROR: Position already taken');
+      // console.log('ERROR: Position already taken');
       return false;
     }
 
     if (checkStatus() === 1 || checkStatus() === 2) {
-      console.log('ERROR: Can\'t make any moves, there is already a winner');
+      // console.log('ERROR: Can\'t make any moves, there is already a winner');
       return false;
     }
 
@@ -111,9 +92,7 @@ const Game = () => {
   return {
     turn,
     board,
-    player: playerName,
     playerTurn,
-    changeName,
     isEmpty,
     isFull,
     resetBoard,
