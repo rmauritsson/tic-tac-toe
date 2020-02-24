@@ -1,22 +1,25 @@
 /* eslint-disable import/extensions */
-const Board = () => {
-  const drawBoard = (game) => {
+const Board = (game) => {
+  const drawBoard = () => {
     console.log('Clicked');
-    const data = ['cell1', 'cell2', 'cell3', 'cell4', 'cell5', 'cell6', 'cell7', 'cell8', 'cell9'];
-    console.log(game.checkStatus());
+    // const data = ['cell1', 'cell2', 'cell3', 'cell4', 'cell5', 'cell6', 'cell7', 'cell8', 'cell9'];
     const cells = 3; // 3 items per row
     let count = 0; // Flag for current cell
     const table = document.createElement('table');
     let row = table.insertRow();
 
     // eslint-disable-next-line no-restricted-syntax
-    for (const i of data) {
+    for (const i of game.board) {
       const cell = row.insertCell();
-      cell.innerHTML = i;
+      if (game.board[i] === 1) cell.innerHTML = 'X';
+      if (game.board[i] === -1) cell.innerHTML = 'O';
+
+      // cell.innerHTML = i;
 
       cell.addEventListener('click', (e) => {
         // eslint-disable-next-line no-alert
-        alert(`Clicked! ${i}`);
+        // alert(`Clicked! ${i}`);
+        game.newMove(i);
         // console.log(e.target);
       });
 
