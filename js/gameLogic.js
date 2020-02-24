@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 // import Player from './player';
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -46,6 +47,34 @@ const Game = () => {
     turn = 1;
   };
 
+  // Returns true if the sum of the 3 variables on a row,         [0] [1] [2]
+  // column or diagonal are equal to 3 or -3.                     [3] [4] [5]
+  // It should only be used by checkStatus                        [6] [7] [8]
+  // returns 0 if there is no winner
+  // returns 1 if the winner is the player 1
+  // returns 2 if the winner is the player 2
+  // returns 3 if there is a draw
+  const checkStatus = () => {
+    const checkWinner = (player, index) => {
+      for (let i = 0; i < 3; i += 1) {
+        if ((board[0 + (index * 3)] + board[1 + (index * 3)] + board[2 + (index * 3)] === player * 3)
+        || (board[0 + index] + board[3 + index] + board[6 + index] === player * 3)
+        || (board[0 + (index * 2)] + board[4] + board[8 - (index * 2)] === player * 3 && index < 2)) {
+          return true;
+        }
+      }
+
+      return false;
+    };
+
+    for (let i = 0; i < 3; i += 1) {
+      if (checkWinner(p1value, i)) return 1;
+      if (checkWinner(p2value, i)) return 2;
+    }
+
+    return isFull() ? 3 : 0;
+  };
+
   // Returns true if the position is valid for a new turn
   const validPosition = (position) => {
     if (position < 0 || position > 8) {
@@ -61,45 +90,22 @@ const Game = () => {
       return false;
     }
 
+    if (checkStatus() === 1 || checkStatus() === 2) {
+      console.log('ERROR: Can\'t make any moves, there is already a winner');
+      return false;
+    }
+
     return true;
   };
 
   // Marks the board using the position argument. Returns true if a new move was successful.
   const newMove = (position) => {
-    if (!validPosition(position)) return false;
+    if (!validPosition(position)) return checkStatus();
 
     board[position] = playerTurn() === 1 ? p1value : p2value;
     turn += 1;
 
-    return true;
-  };
-
-  // Returns true if the sum of the 3 variables on a row,         [0] [1] [2]
-  // column or diagonal are equal to 3 or -3.                     [3] [4] [5]
-  // It should only be used by checkStatus                        [6] [7] [8]
-  const checkWinner = (player, index) => {
-    for (let i = 0; i < 3; i += 1) {
-      if ((board[0 + (index * 3)] + board[1 + (index * 3)] + board[2 + (index * 3)] === player * 3)
-      || (board[0 + index] + board[3 + index] + board[6 + index] === player * 3)
-      || (board[0 + (index * 2)] + board[4] + board[8 - (index * 2)] === player * 3 && index < 2)) {
-        return true;
-      }
-    }
-
-    return false;
-  };
-
-  // returns 0 if there is no winner
-  // returns 1 if the winner is the player 1
-  // returns 2 if the winner is the player 2
-  // returns 3 if there is a draw
-  const checkStatus = () => {
-    for (let i = 0; i < 3; i += 1) {
-      if (checkWinner(p1value, i)) return 1;
-      if (checkWinner(p2value, i)) return 2;
-    }
-
-    return isFull() ? 3 : 0;
+    return checkStatus();
   };
 
   return {
