@@ -1,22 +1,8 @@
 /* eslint-disable import/extensions */
-import gameBoard from './gameBoard.js';
-import Board from './gameLogic.js';
+import Board from './gameBoard.js';
+import Game from './gameLogic.js';
 
-const hideForm = () => {
-  const action = () => {
-    gameBoard.hide();
-  };
-  return { action };
-};
+const game = Game();
+const board = Board(game);
 
-const game = Board();
-game.handleClick();
-game.newMove(0);
-game.newMove(1);
-
-
-
-document.getElementById('turn').innerHTML = `Check status: ${game.board}`;
-document.getElementById('player').innerHTML = `Player: ${game.playerTurn()}`;
-
-//document.getElementById('startGameButton').addEventListener('click', action);
+document.getElementById('gameButton').onclick = () => board.drawBoard();

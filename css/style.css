@@ -22,8 +22,11 @@ body{
    align-items: center;
    grid-template-columns: repeat(3, auto)
 }
-.cell{
-  width: 100px;
-  height: 100px;
-  border: 1px solid black;
+
+table {
+  border-collapse: collapse;
+}
+table tr td {
+  border: 1px solid #000;
+  padding: 40px;
 }

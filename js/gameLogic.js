@@ -2,7 +2,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 
-const Board = () => {
+const Game = () => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
@@ -12,17 +12,6 @@ const Board = () => {
   };
   let turn = 1;
   let board = Array(9).fill(emptySpace);
-
-  const getIndex = () => {
-    //console.log('Clicked');
-    const cells = Array.from(document.querySelector('.cell'));
-    // cells.forEach((cell) => {
-    // cell.innerText = 'X';
-    // });
-  };
-  const handleClick = () => {
-    document.querySelector('.cell').addEventListener('click', getIndex, { once: true });
-  };
 
   // Changes the name of the selected player from the default one
   const changeName = (name, number) => {
@@ -125,8 +114,7 @@ const Board = () => {
     validPosition,
     newMove,
     checkStatus,
-    handleClick,
   };
 };
 
-export default Board;
+export default Game;
