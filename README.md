@@ -32,7 +32,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 * Jair Jaramillo: [Github](https://github.com/jairjy), [Twitter](https://twitter.com/jairjy)
 
-Project Link: [Private Events](https://github.com/rmauritsson/tic-tac-toe)
+GitHub Repository: [Private Events](https://github.com/rmauritsson/tic-tac-toe)
 
 <!-- ACKNOWLEDGEMENTS -->
 
