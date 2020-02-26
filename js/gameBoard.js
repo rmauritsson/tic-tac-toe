@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
-const Board = () => {
+const Board = (nameOne, nameTwo) => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
   const player = {
-    player1: 'Player 1',
-    player2: 'Player 2',
+    player1: document.getElementById('inputPlayerOne').value,
+    player2: document.getElementById('inputPlayerTwo').value
   };
   let turn = 1;
   let board = Array(9).fill(emptySpace);
@@ -164,5 +164,5 @@ const Board = () => {
 document.getElementById('gameButton').onclick = () => {
   const game = Board();
   game.drawBoard(game.board);
-  document.getElementById('gameButton').innerHTML = 'RESET GAME';
+  document.getElementById('resetButton').style.visibility = 'visible';
 };

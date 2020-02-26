@@ -12,11 +12,24 @@
   <div class="container">
     <h1>Tic Tac Toe</h1>
     <div id="gameButtonDiv">
-      <button id="gameButton" class="btn btn-primary">START GAME</button>
+      <button id="resetButton" class="btn btn-primary">RESET GAME</button>
     </div>
 
     <div id="winner">
       <p>Choose player 1 to play with <strong>X</strong> and player 2 to play with <strong>O</strong></p>
+      <div class="col-md-4 offset-md-4">
+      <form id="userform">
+          <div class="form-group">
+            <label for="InputTitle">Player 1</label>
+            <input type="text" class="form-control" id="inputPlayerOne" placeholder="Enter Username" value = "Player One" required>
+          </div>
+          <div class="form-group">
+            <label for="InputAuthor">Player 2</label>
+            <input type="text" class="form-control" id="inputPlayerTwo" placeholder="Enter Username" value="Player Two" required>
+          </div>
+          <button id="gameButton" class="btn btn-primary">START GAME</button>
+        </form>
+      </div>
     </div>
 
     <div class="col-6 offset-4">

@@ -10,6 +10,9 @@ body{
   padding: 20px 0;
 }
 
+#resetButton{
+  display: none;
+}
 table {
   border-collapse: collapse;
 }
