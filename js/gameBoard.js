@@ -1,31 +1,18 @@
 /* eslint-disable max-len */
-const Board = (nameOne, nameTwo) => {
+const Board = (player1, player2) => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
-  const player = {
-    player1: document.getElementById('inputPlayerOne').value,
-    player2: document.getElementById('inputPlayerTwo').value
-  };
+  const board = Array(9).fill(emptySpace);
   let turn = 1;
-  let board = Array(9).fill(emptySpace);
   let status;
 
-  const nameChange = (name, number) => {
-    if (number === 1) player.player1 = name;
-    if (number === 2) player.player2 = name;
-  };
-
   // Returns the Player number from the actual turn
-  const playerTurn = (number = 1) => (turn % 2 === number ? [player.player1, 1] : [player.player2, 2]);
-
-  // Returns true if the board is empty
-  const isEmpty = () => {
-    for (let i = 0; i < board.length; i += 1) {
-      if (board[i] !== emptySpace) return false;
+  const playerTurn = (number = 1) => {
+    if (turn % 2 === number) {
+      return [player1.name, 1];
     }
-
-    return true;
+    return [player2.name, 2];
   };
 
   // Returns true if the board is full
@@ -35,12 +22,6 @@ const Board = (nameOne, nameTwo) => {
     }
 
     return true;
-  };
-
-  // Makes every space of the board empty and resets the turn to 1
-  const resetBoard = () => {
-    board = Array(9).fill(0);
-    turn = 1;
   };
 
   // Returns the number of the winner player, 3 if is a draw, 0 if there is no winner
@@ -91,7 +72,6 @@ const Board = (nameOne, nameTwo) => {
   // Marks the board using the position argument. Returns true if a new move was successful.
   const newMove = (position) => {
     if (!validPosition(position)) return checkStatus();
-
     board[position] = playerTurn()[1] === 1 ? p1value : p2value;
     turn += 1;
 
@@ -111,7 +91,7 @@ const Board = (nameOne, nameTwo) => {
         winner.innerHTML = 'It\'s a draw!';
         break;
       default:
-        winner.innerHTML = `${playerTurn(0)[0]}, is your turn.`;
+        winner.innerHTML = `${playerTurn()[0]}, is your turn.`;
     }
   };
 
@@ -130,13 +110,13 @@ const Board = (nameOne, nameTwo) => {
       cell.class = 'cellClass';
       switch (board[i]) {
         case 1:
-          cell.innerHTML = 'X';
+          cell.innerHTML = player1.symbol;
           break;
         case -1:
-          cell.innerHTML = 'O';
+          cell.innerHTML = player2.symbol;
           break;
         default:
-          cell.innerHTML = '.';
+          cell.innerHTML = ' ';
       }
 
       // eslint-disable-next-line no-loop-func
@@ -156,13 +136,39 @@ const Board = (nameOne, nameTwo) => {
 
   return {
     board,
-    nameChange,
     drawBoard,
   };
 };
 
+const Player = (firstName, firstSymbol) => {
+  let name = firstName;
+  const symbol = firstSymbol;
+
+  const nameChange = (newName) => {
+    name = newName;
+  };
+
+  return {
+    name,
+    symbol,
+    nameChange,
+  };
+};
+
+let name1 = '';
+let name2 = '';
+
 document.getElementById('gameButton').onclick = () => {
-  const game = Board();
+  name1 = document.getElementById('inputPlayerOne').value;
+  name2 = document.getElementById('inputPlayerTwo').value;
+  const game = Board(Player(name1, 'X'), Player(name2, 'O'));
+  game.drawBoard(game.board);
+  document.getElementById('resetButton').style.visibility = 'visible';
+};
+
+
+document.getElementById('resetButton').onclick = () => {
+  const game = Board(Player(name1, 'X'), Player(name2, 'O'));
   game.drawBoard(game.board);
   document.getElementById('resetButton').style.visibility = 'visible';
 };
