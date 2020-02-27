@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-loop-func */
 
 const Board = (player1, player2) => {
