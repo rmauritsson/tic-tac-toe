@@ -81,7 +81,7 @@ module.exports = {
     // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       hash: true,
-      template: `${__dirname}/src/dom/index.html`,
+      template: `${__dirname}/src/html/index.html`,
       filename: 'index.html',
     }),
   ],
