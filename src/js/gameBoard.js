@@ -88,7 +88,7 @@ const Board = (player1, player2) => {
     }
   };
 
-  const drawBoard = (board) => {
+  const drawBoard = (NewBoard) => {
     const cells = 3;
     const table = document.createElement('table');
     const boardTable = document.getElementById('board');
@@ -97,11 +97,11 @@ const Board = (player1, player2) => {
     boardTable.innerHTML = '';
     showWinner();
 
-    for (let i = 0; i < board.length; i += 1) {
+    for (let i = 0; i < NewBoard.length; i += 1) {
       const cell = row.insertCell();
       cell.id = `cell-${i}`;
       cell.class = 'cellClass';
-      switch (board[i]) {
+      switch (NewBoard[i]) {
         case 1:
           cell.innerHTML = player1.symbol;
           break;
@@ -114,7 +114,7 @@ const Board = (player1, player2) => {
 
       cell.addEventListener('click', () => {
         status = newMove(i);
-        drawBoard(board);
+        drawBoard(NewBoard);
       });
 
       count += 1;
@@ -132,35 +132,4 @@ const Board = (player1, player2) => {
   };
 };
 
-const Player = (firstName, firstSymbol) => {
-  let name = firstName;
-  const symbol = firstSymbol;
-
-  const nameChange = (newName) => {
-    name = newName;
-  };
-
-  return {
-    name,
-    symbol,
-    nameChange,
-  };
-};
-
-let name1 = '';
-let name2 = '';
-
-document.getElementById('gameButton').onclick = () => {
-  name1 = document.getElementById('inputPlayerOne').value;
-  name2 = document.getElementById('inputPlayerTwo').value;
-  const game = Board(Player(name1, 'X'), Player(name2, 'O'));
-  game.drawBoard(game.board);
-  document.getElementById('resetButton').style.visibility = 'visible';
-};
-
-
-document.getElementById('resetButton').onclick = () => {
-  const game = Board(Player(name1, 'X'), Player(name2, 'O'));
-  game.drawBoard(game.board);
-  document.getElementById('resetButton').style.visibility = 'visible';
-};
+export default Board;
