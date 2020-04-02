@@ -1,7 +1,7 @@
 import Board from './js/gameBoard';
 import Player from './js/player';
-import './css/style.scss';
 import 'bootstrap';
+import './css/style.scss';
 
 let name1 = '';
 let name2 = '';
