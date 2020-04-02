@@ -11,9 +11,9 @@ const Board = (player1, player2) => {
 
   const playerTurn = (number = 1) => {
     if (turn % 2 === number) {
-      return [player1.name, 1];
+      return [player1.getName(), 1];
     }
-    return [player2.name, 2];
+    return [player2.getName(), 2];
   };
 
   const isFull = () => {

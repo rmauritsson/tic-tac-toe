@@ -6,9 +6,11 @@ const Player = (firstName, firstSymbol) => {
     name = newName;
   };
 
+  const getName = () => name;
+
   return {
-    name,
     symbol,
+    getName,
     nameChange,
   };
 };
