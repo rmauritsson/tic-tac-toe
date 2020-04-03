@@ -1,5 +1,7 @@
 /* eslint-disable global-require */
 /* eslint-disable no-unused-vars */
+/* eslint-disable import/no-unresolved */
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');

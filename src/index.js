@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import Board from './js/gameBoard';
 import Player from './js/player';
 import 'bootstrap';

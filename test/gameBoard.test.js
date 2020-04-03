@@ -24,7 +24,6 @@ test('return 1 as the Player 1 is the winner', () => {
   board.newMove(1);
   board.newMove(3);
   board.newMove(2);
-  board.newMove(6);
 
   expect(board.newMove(6)).toBe(1);
 });
@@ -97,6 +96,8 @@ test('Check Valid position', () => {
     if (checkStatus() === 1 || checkStatus() === 2) {
       return false;
     }
+
+    return true;
   };
 
   expect(validPosition(9)).toBe(false);

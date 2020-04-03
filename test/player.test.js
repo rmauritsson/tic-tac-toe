@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import Player from '../src/js/player';
 
 it('Name is changed', () => {
