@@ -5,15 +5,17 @@ const Board = (player1, player2) => {
   const emptySpace = 0;
   const p1value = 1;
   const p2value = -1;
+  const p1name = player1.getName();
+  const p2name = player2.getName();
   const board = Array(9).fill(emptySpace);
   let turn = 1;
   let status;
 
-  const playerTurn = (number = 1) => {
+  const playerTurn = (number = 1, p1 = p1name, p2 = p2name) => {
     if (turn % 2 === number) {
-      return [player1.getName(), 1];
+      return [p1, 1];
     }
-    return [player2.getName(), 2];
+    return [p2, 2];
   };
 
   const isFull = () => {
