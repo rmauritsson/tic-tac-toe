@@ -65,3 +65,39 @@ test('Allow a new move for the same player as the position selected was repeated
 
   expect(board.playerTurn()[1]).toBe(1);
 });
+
+test('Show Player 1 if he is a winner', () => {
+  const board = Board(mock1, mock2);
+
+  board.newMove(0);
+  board.newMove(1);
+  board.newMove(3);
+  board.newMove(2);
+  board.newMove(6);
+
+  const winner = document.createElement('div');
+  winner.id = 'winner';
+  winner.innerHTML = `${board.playerTurn(0)[0]}, is the winner!`;
+
+  expect(winner.innerHTML).toEqual('Sarah, is the winner!');
+});
+
+test('Check Valid position', () => {
+  const validPosition = (position) => {
+    if (position < 0 || position > 8) {
+      return false;
+    }
+    if (isFull()) {
+      return false;
+    }
+    if (board[position] !== 0) {
+      return false;
+    }
+
+    if (checkStatus() === 1 || checkStatus() === 2) {
+      return false;
+    }
+  };
+
+  expect(validPosition(9)).toBe(false);
+});
