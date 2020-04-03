@@ -11,6 +11,10 @@ const Board = (player1, player2) => {
   let turn = 1;
   let status;
 
+  const setTurn = (number) => {
+    turn = number;
+  };
+
   const playerTurn = (number = 1, p1 = p1name, p2 = p2name) => {
     if (turn % 2 === number) {
       return [p1, 1];
@@ -130,7 +134,11 @@ const Board = (player1, player2) => {
 
   return {
     board,
+    setTurn,
     drawBoard,
+    playerTurn,
+    showWinner,
+    newMove,
   };
 };
 
